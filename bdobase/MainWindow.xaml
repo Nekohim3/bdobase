@@ -1,0 +1,64 @@
+﻿<Window x:Class="bdobase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bdobase"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" PreviewKeyDown="Window_PreviewKeyDown" MinWidth="1280" MinHeight="720">
+    <Grid Background="#ff333333">
+        <Grid Name="MainGrid" PreviewMouseLeftButtonDown="TreeCanvas_PreviewMouseDown" PreviewMouseLeftButtonUp="TreeCanvas_PreviewMouseLeftButtonUp" Background="#ff333333" PreviewMouseWheel="MainGrid_PreviewMouseWheel" Margin="777,0,0,173">
+            <Canvas Name="TreeCanvas" Background="#ffeeeeee"  PreviewMouseMove="TreeCanvas_PreviewMouseMove" HorizontalAlignment="Left" Width="0" Height="0" VerticalAlignment="Top">
+                <Canvas.RenderTransform>
+                    <TransformGroup x:Name="tg">
+                        <TranslateTransform x:Name="tt"/>
+                        <ScaleTransform x:Name="st"/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+
+            </Canvas>
+        </Grid>
+        <Grid Name="FilterGrid" Background="#ff666666" HorizontalAlignment="Right" Width="300" Margin="0,0,-300,0">
+            <TextBox TextChanged="textBox_TextChanged" x:Name="TB_QName" HorizontalAlignment="Left" Height="23" Margin="10,239,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280"/>
+            <Label x:Name="label" Content="Тип" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Height="22" Width="62" Padding="0" VerticalContentAlignment="Center"/>
+            <ComboBox SelectionChanged="CB_SelectionChanged" x:Name="CB_QuestType" HorizontalAlignment="Left" Margin="77,267,0,0" VerticalAlignment="Top" Width="213"/>
+            <Label x:Name="label_Copy" Content="Уровень" HorizontalAlignment="Left" Margin="10,294,0,0" VerticalAlignment="Top" Height="22" Width="62" Padding="0" VerticalContentAlignment="Center"/>
+            <ComboBox SelectionChanged="CB_SelectionChanged" x:Name="CB_Level_Type" HorizontalAlignment="Left" Margin="77,294,0,0" VerticalAlignment="Top" Width="103"/>
+            <ComboBox SelectionChanged="CB_SelectionChanged" x:Name="CB_Level_Side" HorizontalAlignment="Left" Margin="185,294,0,0" VerticalAlignment="Top" Width="50"/>
+            <ComboBox SelectionChanged="CB_SelectionChanged" x:Name="CB_Level_Value" HorizontalAlignment="Left" Margin="240,294,0,0" VerticalAlignment="Top" Width="50"/>
+            <CheckBox x:Name="CHB_VV" Content="Вертикальная визуализация" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Unchecked="checkBox_Checked"/>
+            <CheckBox x:Name="checkBox_Copy" Content="Показывать следующие квесты (experemental)" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top"/>
+            <ListBox x:Name="LB_FQuests" HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="300" SelectionChanged="LB_FQuests_SelectionChanged" />
+        </Grid>
+        <Grid Name="InfoGrid" Height="175" VerticalAlignment="Bottom" Background="#ff999999" Margin="0,0,0,-175">
+            <Label FontSize="15" Foreground="#ff000000" Padding="2" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy6" Content="ID:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label FontSize="15" Foreground="#ff000000" Padding="2" VerticalContentAlignment="Center" Height="25"  x:Name="label1" Content="Название:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0"/>
+            <Label FontSize="15" Foreground="#ff000000" Padding="2" VerticalContentAlignment="Center" Height="25" x:Name="label1_Copy" Content="Категория:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0"/>
+            <Label FontSize="15" Foreground="#ff000000" Padding="2" VerticalContentAlignment="Center" Height="25" x:Name="label1_Copy1" Content="Регион:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,75,0,0"/>
+            <Label FontSize="15" Foreground="#ff000000" Padding="2" VerticalContentAlignment="Center" Height="25" x:Name="label1_Copy3" Content="Рекомендуемый уровень:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0"/>
+            <Label FontSize="15" Foreground="#ff000000"  Padding="2" VerticalContentAlignment="Center" Height="25" x:Name="label1_Copy4" Content="Необходимый уровень:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,125,0,0"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_ID" HorizontalAlignment="Left" Margin="186,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_Name" HorizontalAlignment="Left" Margin="186,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_Category" HorizontalAlignment="Left" Margin="186,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_Region" HorizontalAlignment="Left" Margin="186,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_RLevel" HorizontalAlignment="Left" Margin="186,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_NLevel" HorizontalAlignment="Left" Margin="186,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="200"/>
+            <Label FontSize="15" Padding="2" Foreground="#ff000000" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy5" Content="Стартовый NPC:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,0,0,0"/>
+            <Label FontSize="15" Padding="2" Foreground="#ff000000" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy13" Content="Конечный NPC:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,25,0,0"/>
+            <Label FontSize="15" Padding="2" Foreground="#ff000000" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy12" Content="Необходимо репутации:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,50,0,0"/>
+            <Label FontSize="15" Padding="2" Foreground="#ff000000" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy11" Content="Время восстановления:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,75,0,0"/>
+            <Label FontSize="15" Padding="2" Foreground="#ff000000" VerticalContentAlignment="Center" Height="25" x:Name="label1_Copy2" Content="Класс:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,100,0,0"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_sNPC" HorizontalAlignment="Left" Margin="568,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="100"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_eNPC" HorizontalAlignment="Left" Margin="568,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="100"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_rep" HorizontalAlignment="Left" Margin="568,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="100"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_rtime" HorizontalAlignment="Left" Margin="568,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="100"/>
+            <TextBlock FontSize="15" Padding="2" Foreground="#ff000000" x:Name="TB_INF_Class" HorizontalAlignment="Left" Margin="568,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="100"/>
+            <Button x:Name="button" Content="Открыть на сайте" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Width="181" Height="25" Click="button_Click_1"/>
+            <Label Foreground="#ff000000" FontSize="15" Padding="2" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy7" Content="Базовые награды:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="673,0,0,0" Width="295"/>
+            <Label Foreground="#ff000000" FontSize="15" Padding="2" VerticalContentAlignment="Center" Height="25"  x:Name="label1_Copy8" Content="Награды на выбор:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="977,0,0,0" Width="295"/>
+            <TextBlock FontSize="15" Padding="2" x:Name="TB_INF_BR" HorizontalAlignment="Left" Margin="673,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="295"/>
+            <TextBlock FontSize="15" Padding="2" x:Name="TB_INF_SR" HorizontalAlignment="Left" Margin="977,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="150" Width="295"/>
+            <Button HorizontalAlignment="Right" Width="25" Height="25" VerticalAlignment="Top" Background="Red" Content="X" FontWeight="Bold" FontSize="25" Padding="-100" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>
